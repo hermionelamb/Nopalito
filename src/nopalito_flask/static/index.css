@@ -1,0 +1,147 @@
+
+/* styling the main body of the website */
+.body{
+    background-color: #DEA54B;
+    margin: 0;
+
+}
+
+
+.grid {
+    height: 600px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 10px;
+    column-gap: 15px ;
+  
+  }
+
+.a {
+    grid-column: span 5;
+    grid-row-start: 1;
+    grid-row-end: span 1; 
+    background-color: #d741a7;
+    display: grid; /* Add this line to make .a a grid container */
+    grid-template-columns: repeat(6, 1fr); /* Define columns for the inner grid */
+    grid-template-rows: 1fr; /* Define rows for the inner grid */
+} 
+
+.b {
+    grid-column: span 5;
+    grid-row-start: 2;
+    grid-row-end: span 5;  
+    color: white; 
+  
+
+}
+
+/* .overlap {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  } */
+ 
+
+.buttond{
+    grid-row-start: 1; 
+    grid-row-end: span 1;
+    grid-column-start: 2;
+    grid-column-end: span 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.buttona{
+    grid-row-start: 1; 
+    grid-row-end: span 1;
+    grid-column-start: 3;
+    grid-column-end: span 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonc{
+    grid-row-start: 1; 
+    grid-row-end: span 1;
+    grid-column-start: 4; 
+    grid-column-end: span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonb{
+
+    grid-row-start: 1; 
+    grid-row-end: span 1;
+    grid-column-start: 5; 
+    grid-column-end: span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.button {
+  background-color: #d741a7;
+  color: #5398BE;
+  height: 50%;
+  width: 55%;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  font-size: 2rem;
+}
+
+/* .button:hover{
+    background-color: #DEA54B;
+} */
+
+.button a {
+    color: #5398BE; /* Set the text color for the anchor element */
+    text-decoration: none; /* Optional: Remove underline from the link */
+}
+
+
+.button a:hover {
+    color: #3a1772;
+ /* Set the text color on hover */
+}
+
+
+
+/* hollywood cerise: #d741a7
+persian indigo: #3a1772
+celestial blue: #5398BE
+naples yellow: #F2CD5D
+earth yellow: #DEA54B */
+.nopalito-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.home-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.logo{
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}

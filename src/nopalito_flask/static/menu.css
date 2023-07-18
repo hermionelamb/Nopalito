@@ -1,0 +1,169 @@
+
+/* creating a grid where menu items will be stored in  */
+.nestedgrid{
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 1fr 1fr 1fr 50px; 
+    column-gap: 5%;
+    row-gap: 5%;
+    justify-content: space-evenly;
+    margin-left: 5%;
+    margin-right: 5%;
+    
+}
+
+.starters{
+    grid-area: 1 / 1 / 2 / 4;
+
+    text-align: center;
+}
+
+
+/* styling rules for the images in the menu */
+.starter1 img, .starter2  img , .starter3  img, 
+.starter4 img, .starter5 img, .starter6 img{
+    width: 100%;
+    height: 50%;
+}
+
+
+/* defining the grid boxes for the menu items */
+
+.starter1{
+    grid-area: 2 / 1 / 3 / 2;
+    background-color: #F2CD5D;
+    overflow: hidden;
+
+}
+
+
+
+.starter2{
+    grid-area: 2 / 2 / 3 / 3;
+    background-color: #F2CD5D;
+    overflow: hidden;
+
+}
+
+
+.starter3{
+    grid-area: 2 / 3 / 3 / 4;
+    background-color: #F2CD5D;
+    overflow: hidden;
+  
+
+}
+
+.starter4{
+    grid-area: 3 / 1 / 4 / 2;
+    background-color: #F2CD5D;
+    overflow: hidden;
+
+}
+
+
+
+.starter5{
+    grid-area: 3 / 2 / 4 / 3;
+    background-color: #F2CD5D;
+    overflow: hidden;
+    
+
+}
+
+
+.starter6{
+    grid-area: 3 / 3 / 4 / 4;
+    background-color: #F2CD5D;
+    overflow: hidden;
+  
+
+}
+/*                          css for smaller screens                                          */
+
+@media  (max-width: 500px){
+
+    .nestedgrid{
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    body{
+        background-color: aqua;
+
+    }
+
+    .starter1 img, .starter2  img , .starter3  img, 
+    .starter4 img, .starter5 img, .starter6 img{
+    width: 100%;
+    height: auto;}
+
+    .starters{
+        grid-area: 1 / 1 / 2 / 2;
+    
+        text-align: center;
+    }
+    
+
+    .starter1{
+        grid-row-start: 2 ;
+        grid-row-end: 3;
+        background-color: #F2CD5D;
+        overflow: hidden;
+        display: block;
+    
+    }
+
+    .starter2{
+        grid-row-start: 3 ;
+        grid-row-end: 4;
+        background-color: #F2CD5D;
+        overflow: hidden;
+        display: block;
+    
+    }
+
+    .starter3{
+        grid-row-start: 4 ;
+        grid-row-end: 5;
+        background-color: #F2CD5D;
+        overflow: hidden;
+        display: block;
+    
+    }
+
+    .starter4{
+        grid-row-start: 5 ;
+        grid-row-end: 6;
+        background-color: #F2CD5D;
+        overflow: hidden;
+        display: block;
+    
+    }
+
+    .starter5{
+        grid-row-start: 6 ;
+        grid-row-end: 7;
+        background-color: #F2CD5D;
+        overflow: hidden;
+        display: block;
+    
+    }
+
+    .starter6{
+        grid-row-start: 7 ;
+        grid-row-end: 8;
+        background-color: #F2CD5D;
+        overflow: hidden;
+        display: block;
+    
+    }
+    
+    
+    
+    
+
+
+
+
+}

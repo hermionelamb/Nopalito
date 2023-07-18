@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Nopalito</title>
+  <!-- linking the necessary style sheets -->
+  <link rel="stylesheet"type='text/css' href="{{url_for('static', filename='index.css')}}">
+  <link rel="stylesheet"type='text/css' href="{{url_for('static', filename='home.css')}}">
+
+</head>
+<body class = 'body'>
+  <div class = 'grid'>
+    <div>
+
+    </div>
+    <!-- nav bar -->
+    <div class = 'a'>
+        <!-- button for home page -->
+        <div class = 'buttond'>
+            <button class = 'button' ><a href="{{ url_for('index') }}"> HOME </a></button>
+        </div>
+        <!-- button for menu page -->
+       <div class = 'buttona'>
+            <button class = 'button' ><a href="{{ url_for('menu') }}"> MENU </a></button>
+       </div>
+       <!-- button for about page -->
+       <div class = 'buttonb'>
+            <button class = 'button'> <a href="{{ url_for('about') }}"> ABOUT </a></button>
+       </div>
+       <!-- button for contact page -->
+       <div class = buttonc>
+            <button class = 'button'> <a href="{{ url_for('contact') }}"> CONTACT </a> </button>
+       </div>
+       
+    </div>
+    <div class = 'b'>
+         <!-- noplaito name -->
+         <div  class = 'nopalito-div'>
+        <img src = "{{url_for('static', filename = 'images/logo.png' )}}" class = 'logo'> 
+        </div>
+        <div class='home-info'>
+        <h2> <br> Join us in the heart of Soho for a trip to Mexico </h2>
+        </br>
+        <h3>"Indulge in authentic flavors and vibrant culture 
+          at our Mexican restaurant, where every bite takes you on a culinary adventure."</h3>
+        </div>
+        <!-- <img src="{{url_for('static', filename = 'images/nopalito_background.jpg' )}}" class = 'overlap'> -->
+    </div>
+  </div>
+  
+  
+</body>
+</html>
+
+
+
+

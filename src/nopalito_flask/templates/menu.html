@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Nopalito</title>
+  <!-- linking necessary style sheets -->
+  <link rel="stylesheet"type='text/css' href="{{url_for('static', filename='index.css')}}">
+  <link rel="stylesheet"type='text/css' href="{{url_for('static', filename='menu.css')}}">
+</head>
+<body class = 'body'>
+  <div class = 'grid'>
+    
+     <!-- nav bar -->
+     <div class = 'a'>
+      <!-- button for home page -->
+      <div class = 'buttond'>
+          <button class = 'button' ><a href="{{ url_for('index') }}"> HOME </a></button>
+      </div>
+      <!-- button for menu page -->
+     <div class = 'buttona'>
+          <button class = 'button' ><a href="{{ url_for('menu') }}"> MENU </a></button>
+     </div>
+     <!-- button for about page -->
+     <div class = 'buttonb'>
+          <button class = 'button'> <a href="{{ url_for('about') }}"> ABOUT </a></button>
+     </div>
+     <!-- button for contact page -->
+     <div class = buttonc>
+          <button class = 'button'> <a href="{{ url_for('contact') }}"> CONTACT </a> </button>
+     </div>
+     
+  </div>
+    <div class = 'b'>
+    <div class = 'nestedgrid'>
+        <div class = 'starters'>
+          <h1> STARTERS</h1>
+        </div>
+        <div class = starter1>
+          <img src="{{url_for('static', filename = 'images/guac_totopos.jpg' )}}" />
+          <h1>Guacamole & Totopos</h1>
+          <p class="description">
+            Delight in our homemade guacamole, crafted from fresh avocados, lime juice, and spices, served alongside crispy totopos chips.</p>
+        </div>
+        <div class = starter2>
+          <img src= "{{url_for('static', filename = 'images/salsa_totopos.jpg' )}}" />
+          <h1 > Salsa verde, roja and totopos </h1>
+          <p> 
+            Tangy green and smoky red salsas paired with crispy
+            tortilla chips for a flavorful appetizer.</p>
+        </div>
+        <div class = starter3>
+          <img src= "{{url_for('static', filename = 'images/avocado_ceviche.jpg' )}}">
+          <h1 > Avocado Ceviche </h1>
+          <p>A refreshing blend of diced avocados, 
+            tangy citrus juices, and vibrant herbs for a zesty and creamy starter.</p>
+        </div>
+        <div class = starter4>
+          <img src= "{{url_for('static', filename = 'images/seabass_ceviche.jpg' )}}" />
+          <h1>Seabass Ceviche</h1>
+          <p class="description">
+            Delight in our homemade guacamole, crafted from fresh avocados, lime juice, and spices, served alongside crispy totopos chips.</p>
+        </div>
+        <div class = starter5>
+          <img src="{{url_for('static', filename = 'images/queso_fundido.jpg' )}}" />
+          <h1 > Queso fundido and totopos </h1>
+          <h3> with chorizo or chiltomate</h3>
+          <p> 
+            Tangy green and smoky red salsas paired with crispy
+            tortilla chips for a flavorful appetizer.</p>
+        </div>
+        <div class = starter6>
+          <img src= "{{url_for('static', filename = 'images/ensalada_de_nopales.jpg' )}}">
+          <h1 > Ensalade De Nopales</h1>
+          <p>A refreshing blend of diced avocados, 
+            tangy citrus juices, and vibrant herbs for a zesty and creamy starter.</p>
+        </div>
+    </div>
+    </div>
+  </div>
+  
+  
+</body>
+</html>

@@ -1,0 +1,18 @@
+body {
+    background-image: url('images/nopalito_background.jpg');
+    background-repeat: repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.5); /* 0.5 represents 50% opacity */
+    
+
+}
+
+.home-info{
+    width: 50%; /* Set the width to 50% of the parent container */
+    margin: 0 auto; /* Center the div horizontally */
+    padding-left: 25%; /* Set 25% padding on the left side */
+    padding-right: 25%; /* Set 25% padding on the right side */
+    display: block;
+    
+}
