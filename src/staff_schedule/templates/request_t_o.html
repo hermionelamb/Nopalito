@@ -1,0 +1,28 @@
+<!-- request_t_o.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Request Time Off</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='register-style.css') }}">
+</head>
+</head>
+<body>
+    <h1>Request Time Off</h1>
+    <h2>Hello, {{ first_name, surname, staff_id }}</h2>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form method="post" action="{{ url_for('request_t_o') }}">
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" required><br><br>
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" required><br><br>
+        <label for="reason">Reason:</label>
+        <input type="text" id="reason" name="reason"><br><br>
+        <input type="submit" value="Request">
+    </form>
+
+    <button onclick="window.location.href='/dashboard'">Back</button>
+    
+</body>
+</html>
