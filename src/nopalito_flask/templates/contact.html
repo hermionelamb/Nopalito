@@ -3,33 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <title>Nopalito</title>
+  <!-- linking necessary style sheets -->
   <link rel="stylesheet"type='text/css' href="{{url_for('static', filename='index.css')}}">
+  <link rel="stylesheet"type='text/css' href="{{url_for('static', filename='contact.css')}}">
 </head>
 <body class = 'body'>
   <div class = 'grid'>
+    
      <!-- nav bar -->
      <div class = 'a'>
       <!-- button for home page -->
       <div class = 'buttond'>
-          <button class = 'button' ><a href="{{ url_for('index') }}"> HOME </a></button>
+          <button class = 'button font_logo' ><a href="{{ url_for('index') }}"> HOME </a></button>
       </div>
       <!-- button for menu page -->
      <div class = 'buttona'>
-          <button class = 'button' ><a href="{{ url_for('menu') }}"> MENU </a></button>
+          <button class = 'button font_logo' ><a href="{{ url_for('menu') }}"> MENU </a></button>
      </div>
      <!-- button for about page -->
      <div class = 'buttonb'>
-          <button class = 'button'> <a href="{{ url_for('about') }}"> ABOUT </a></button>
+          <button class = 'button font_logo'> <a href="{{ url_for('about') }}"> ABOUT </a></button>
      </div>
      <!-- button for contact page -->
      <div class = buttonc>
-          <button class = 'button'> <a href="{{ url_for('contact') }}"> CONTACT </a> </button>
+          <button class = 'button font_logo'> <a href="{{ url_for('contact') }}"> CONTACT </a> </button>
      </div>
      
   </div>
     <div class = 'b'>
-        <h1>CONTACT US</h1>
-        <h2>Here some contact info and general info blah blah blah </h2>
+    <div class = 'nestedgrid'>
+      
+
+        <div class="main">
+          <div class="gallery">
+            <div class="menu-item">
+              <h1> Little ICON</h1>
+              <h3> Visit us</h3>
+              <p class = 'thumbnail'> 
+                x street name <br>
+                soho<br>
+                london <br>
+                post code <br>
+              </p>
+              <h3> Phone number: 000 0000 0000 </h3>
+              <h3> Email Address: nopalitosoho@gmail.com</h3>
+            </div>
+            <div class="menu-item-2">
+             <img src= "{{ url_for('static', filename='images/map.png') }}">
+            </div>
+            <div class="menu-item">
+              <h1> Opening Hours</h1>
+              
+              <h3 class = 'thumbnail'> <br><br>
+               Monday: 12:00 - 22:00 <br>
+               Tuesday: 12:00 - 22:00 <br>
+               Wednesday: 12:00 - 22:00 <br>
+               Thursday: 12:00 - 22:00 <br>
+               Friday: 12:00 - 23:00 <br>
+               Saturday: 12:00 - 23:00 <br>
+               Sunday: 12:00 - 22:00 <br>
+              </h3>
+            </div>
+            
+          </div>
+        </div>
+
+    </div>
     </div>
   </div>
   
