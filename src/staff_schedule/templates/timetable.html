@@ -1,0 +1,109 @@
+<!-- timetable.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timetable</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='timetable-style.css') }}">
+</head>
+<body>
+    <h1>Timetable</h1>
+    <div class="date-navigation">
+        <button id="prev-week" onclick="changeWeek(-1)">&lt;</button>
+        <span id="current-week">Week of July 24, 2023</span>
+        <button id="next-week" onclick="changeWeek(1)">&gt;</button>
+    </div>
+    
+    
+    <table>
+        <!-- Header row with days of the week -->
+        <tr>
+            <th class="id-column">ID</th>
+            <th class="name-column">Name</th>
+            <th id="day-0"></th>
+            <th id="day-1"></th>
+            <th id="day-2"></th>
+            <th id="day-3"></th>
+            <th id="day-4"></th>
+            <th id="day-5"></th>
+            <th id="day-6"></th>
+        </tr>
+        <!-- Add rows for employee names and schedule data -->
+        {% for emp_data in staff_data %}
+        <tr>
+            <td class="id-column">{{ emp_data[0] }}</td>
+            <td class="name-column">{{ emp_data[3] }}</td>
+            {% set shifts = timetable_data[emp_data[0]] %}
+            {% set column_shifts = {} %}
+
+            {% for shift in shifts %}
+                {% set shift_date_str = shift.start_time_day.strftime('%Y-%m-%d') %}
+                {% if shift_date_str not in column_shifts %}
+                    {% set _ = column_shifts.update({shift_date_str: [shift]}) %}
+                {% else %}
+                    {% set _ = column_shifts[shift_date_str].append(shift) %}
+                {% endif %}
+            {% endfor %}
+
+            {% for i in range(7) %}
+                {% set column_date_str = column_dates[i].strftime('%Y-%m-%d') %}
+                {% set shifts_for_day = column_shifts.get(column_date_str, []) %}
+                {% if shifts_for_day %}
+                    <td>
+                        {% for shift in shifts_for_day %}
+                            {% set shift_start_time_str = shift.start_time_day.strftime('%H:%M') %}
+                            {% set shift_end_time_str = shift.end_time_day.strftime('%H:%M') %}
+                            {{ shift_start_time_str }} - {{ shift_end_time_str }}<br>
+                        {% endfor %}
+                    </td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <button onclick="window.location.href='/'">Back</button>
+
+    <script>
+        let currentWeekStart = new Date();
+    
+        function getMonday(d) {
+            let day = d.getDay();
+            let diff = d.getDate() - day + (day == 0 ? -6 : 1); // Adjust to Monday
+            return new Date(d.setDate(diff));
+        }
+    
+        function updateTableHeaders() {
+            const headerCells = document.querySelectorAll('th[id^="day-"]');
+            for (let i = 0; i < 7; i++) {
+                let date = new Date(currentWeekStart);
+                date.setDate(date.getDate() + i);
+                let formattedDate = date.toLocaleDateString('en-US', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });
+                headerCells[i].textContent = formattedDate;
+            }
+        }
+    
+        function changeWeek(weeks) {
+            currentWeekStart.setDate(currentWeekStart.getDate() + weeks * 7);
+            updateTableHeaders();
+            const startDate = formatDate(currentWeekStart);
+            // const startDate = currentWeekStart;
+            const endDate = formatDate(new Date(currentWeekStart.getTime() + 6 * 24 * 60 * 60 * 1000));
+            // const endDate = new Date(currentWeekStart.getTime() + 6 * 24 * 60 * 60 * 1000)
+            document.getElementById("current-week").textContent = `Week of ${startDate} to ${endDate}`;
+        }
+    
+        function formatDate(date) {
+            const options = { weekday: 'long', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+    
+        // Initialize the current week display
+        currentWeekStart = getMonday(currentWeekStart);
+        updateTableHeaders();
+        changeWeek(0);
+    </script>               
+</body>
+</html>
