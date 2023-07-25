@@ -14,19 +14,19 @@
      <div class = 'a'>
       <!-- button for home page -->
       <div class = 'buttond'>
-          <button class = 'button' ><a href="{{ url_for('index') }}"> HOME </a></button>
+          <button class = 'button font_logo' ><a href="{{ url_for('index') }}"> HOME </a></button>
       </div>
       <!-- button for menu page -->
      <div class = 'buttona'>
-          <button class = 'button' ><a href="{{ url_for('menu') }}"> MENU </a></button>
+          <button class = 'button font_logo' ><a href="{{ url_for('menu') }}"> MENU </a></button>
      </div>
      <!-- button for about page -->
      <div class = 'buttonb'>
-          <button class = 'button'> <a href="{{ url_for('about') }}"> ABOUT </a></button>
+          <button class = 'button font_logo'> <a href="{{ url_for('about') }}"> ABOUT </a></button>
      </div>
      <!-- button for contact page -->
      <div class = buttonc>
-          <button class = 'button'> <a href="{{ url_for('contact') }}"> CONTACT </a> </button>
+          <button class = 'button font_logo'> <a href="{{ url_for('contact') }}"> CONTACT </a> </button>
      </div>
      
   </div>
@@ -35,45 +35,206 @@
         <div class = 'starters'>
           <h1> STARTERS</h1>
         </div>
-        <div class = starter1>
-          <img src="{{url_for('static', filename = 'images/guac_totopos.jpg' )}}" />
-          <h1>Guacamole & Totopos</h1>
-          <p class="description">
-            Delight in our homemade guacamole, crafted from fresh avocados, lime juice, and spices, served alongside crispy totopos chips.</p>
+
+        <div class="main">
+          <div class="gallery">
+            <div class="gallery-item">
+              <h1> Guacamole & Totopos</h1>
+              <p class = 'thumbnail'> Delight in our homemade guacamole, crafted from fresh avocados, 
+                lime juice, and spices, served alongside crispy totopos chips.</p>
+              <h4 class = 'price'> 4.95 </h4>
+            </div>
+            <div class="gallery-item">
+              <h1> Salsa verde, roja and totopos</h1>
+              <p class = 'thumbnail'> Tangy green and smoky red salsas paired with crispy
+                tortilla chips for a flavorful appetizer.</p>
+                
+                <h4 class = 'price'> 4.95 </h4>
+                
+            </div>
+            <div class="gallery-item">
+              <h1> Avocado Ceviche</h1>
+              <p class = 'thumbnail'> A refreshing blend of diced avocados, 
+                tangy citrus juices, and vibrant herbs for a zesty and creamy starter.</p>
+              <h4 class = 'price'> 5.95 </h4>
+            </div>
+            <div class="gallery-item">
+              <h1> Seabass Ceviche</h1>
+              <p class = 'thumbnail'> Delight in our homemade guacamole, crafted from fresh avocados,
+                 lime juice, and spices, served alongside crispy totopos chips.</p>
+              <h4 class = 'price'> 6.95 </h4>
+            </div>
+            <div class="gallery-item">
+              <h1> Queso fundido and totopos</h1>
+              <h3> with chorizo or chiltomate</h3>
+              <p class = 'thumbnail'>  Tangy green and smoky red salsas paired with crispy
+                tortilla chips for a flavorful appetizer.</p>
+              <h4 class = 'price'> 4.95 </h4>
+            </div>
+            <div class="gallery-item">
+              <h1> Ensalade De Nopales</h1>
+              <p class = 'thumbnail'> A refreshing blend of diced avocados, 
+                tangy citrus juices, and vibrant herbs for a zesty and creamy starter.</p>
+              <h4 class = 'price'> 5.95 </h4>
+            </div>
+          </div>
         </div>
-        <div class = starter2>
-          <img src= "{{url_for('static', filename = 'images/salsa_totopos.jpg' )}}" />
-          <h1 > Salsa verde, roja and totopos </h1>
-          <p> 
-            Tangy green and smoky red salsas paired with crispy
-            tortilla chips for a flavorful appetizer.</p>
+
+        <div class = 'starters'>
+          <h1> MAINS</h1>
         </div>
-        <div class = starter3>
-          <img src= "{{url_for('static', filename = 'images/avocado_ceviche.jpg' )}}">
-          <h1 > Avocado Ceviche </h1>
-          <p>A refreshing blend of diced avocados, 
-            tangy citrus juices, and vibrant herbs for a zesty and creamy starter.</p>
+
+        <div class="main">
+          <div class="gallery">
+            <div class="menu-item">
+              <h1> Burritto, Enchilada or Fajita</h1>
+              <h2> Choose between </h2>
+              <h3> Choose your filling</h3>
+            
+              <p class = 'thumbnail'>    
+                 Chicken      8.95 <br>
+                 Crane Asada      8.95  <br>
+                 Vegetable      7.95 <br>
+                 Vegan Chicken      8.95 <br>
+                 Roast Butternut Squash      7.95 <br>
+                 Pollo Asado al Carbon      8.95 </p>
+            </div>
+            <div class="menu-item">
+              <h1> Tacos</h1>
+              <h2> Choose from either soft or hard tacos with 
+                one of the following fillindgs:
+              </h2>
+              <p class = 'thumbnail'>
+                Chicken 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                9.95 <br>
+                Baja Seabass 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     11.95 <br>
+                Pork Carnitas 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                9.95 <br>
+                Grilled Vegetables  
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    8.95 <br>
+                Mushroom    
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+                8.95 <br>
+                Lamb Barbacoa  
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                10.95 <br>
+                Carne Asada 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                9.95
+              </p>
+            </div>
+
+          </div>
         </div>
-        <div class = starter4>
-          <img src= "{{url_for('static', filename = 'images/seabass_ceviche.jpg' )}}" />
-          <h1>Seabass Ceviche</h1>
-          <p class="description">
-            Delight in our homemade guacamole, crafted from fresh avocados, lime juice, and spices, served alongside crispy totopos chips.</p>
+        
+        <div class = 'starters'>
+          <h1> Desserts</h1>
         </div>
-        <div class = starter5>
-          <img src="{{url_for('static', filename = 'images/queso_fundido.jpg' )}}" />
-          <h1 > Queso fundido and totopos </h1>
-          <h3> with chorizo or chiltomate</h3>
-          <p> 
-            Tangy green and smoky red salsas paired with crispy
-            tortilla chips for a flavorful appetizer.</p>
+
+        <div class="main">
+          <div class="gallery">
+            <div class="gallery-item">
+              <h1> Churros</h1>
+              <p class = 'thumbnail'>Crispy fried dough sprinkled with cinnamon sugar, 
+                paired with luscious chocolate dipping sauce. </p>
+                <h4 class = 'price'> 5.95 </h4>
+            </div>
+            <div class="gallery-item">
+              <h1> Tres Leches Cake</h1>
+              <p class = 'thumbnail'> A luscious, moist sponge cake soaked in three milks, 
+                topped with whipped cream. </p>
+                <h4 class = 'price'> 5.95 </h4>
+            </div>
+            <div class="gallery-item">
+              <h1> Pastel de Elote</h1>
+              <p class = 'thumbnail'>A savory Mexican corn cake, delicately spiced, 
+                and delightfully moist.</p>
+                <h4 class = 'price'> 4.95 </h4>
+            </div>
+            <div class="gallery-item">
+              <h1> Tamales & Champurrado</h1>
+              <p class = 'thumbnail'>  Soft, flavorful corn masa pockets with a side of rich,
+                 warm Mexican chocolate drink.</p>
+                 <h4 class = 'price'> 5.95 </h4>
+            </div>
+          </div>
         </div>
-        <div class = starter6>
-          <img src= "{{url_for('static', filename = 'images/ensalada_de_nopales.jpg' )}}">
-          <h1 > Ensalade De Nopales</h1>
-          <p>A refreshing blend of diced avocados, 
-            tangy citrus juices, and vibrant herbs for a zesty and creamy starter.</p>
+
+        <div class = 'starters'>
+          <h1> Drinks </h1>
         </div>
+
+        <div class="main">
+          <div class="gallery">
+            <div class="menu-item">
+              <h1> Cocktails</h1>
+              <h3> £10 or 2 for £18</h3>
+              <p class = 'thumbnail'> 
+                Margarita <br>
+                Michelada <br>
+                Paloma <br>
+                Clericot <br>
+                Cantarito <br>
+                Carajillo
+              </p>
+            </div>
+            <div class="menu-item">
+              <h1> Beers</h1>
+              <h3> £4.60</h3>
+              <p class = 'thumbnail'> 
+                Sol Cerveza <br>
+                Corona Extra <br>
+                Chelada <br>
+                Estrella Jalisco <br>
+                Modelo Especial
+
+              </p>
+            </div>
+            <div class="menu-item">
+              <h1> Soft Drinks</h1>
+              <h3> £3.30</h3>
+              <p class = 'thumbnail'> 
+                Sprite <br>
+                Diet Coke <br>
+                Coke <br>
+                Jarritos <br>
+                Ginger Ale <br>
+                Bottled Water <br>
+              </p>
+            </div>
+            <div class="menu-item">
+              <h1> Tequila</h1>
+              <h3> £5 or 3 for £12</h3>
+              <p class = 'thumbnail'> 
+                El tequileno blanco <br>
+                El tequileno reposado <br>
+                Mezcal
+              </p>
+            </div>
+
+          </div>
+        </div>
+
     </div>
     </div>
   </div>
