@@ -1,0 +1,16 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage-style.css') }}">
+</head>
+
+<body>
+    <h1>Profile</h1>
+    <h2>Hello, {{ first_name, surname }}</h2>
+    <button onclick="window.location.href='/timetable'">View Timetable</button>
+    <button onclick="window.location.href='/request_t_o'">Request Time Off</button>
+    <button onclick="window.location.href='/'">Sign Out</button>
+</body>
+</html>
