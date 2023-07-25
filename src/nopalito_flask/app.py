@@ -26,7 +26,7 @@ def about():
 def contact():
     return render_template('contact.html')
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/booking', methods=['GET', 'POST'])
 def reservation_form():
     if request.method == 'POST':
         # Retrieve form data
