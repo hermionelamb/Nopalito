@@ -3,35 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <title>Nopalito</title>
+  <!-- linking necessary style sheets -->
   <link rel="stylesheet"type='text/css' href="{{url_for('static', filename='index.css')}}">
+  <link rel="stylesheet"type='text/css' href="{{url_for('static', filename='menu2.css')}}">
 </head>
 <body class = 'body'>
   <div class = 'grid'>
+    
      <!-- nav bar -->
      <div class = 'a'>
       <!-- button for home page -->
       <div class = 'buttond'>
-          <button class = 'button' ><a href="{{ url_for('index') }}"> HOME </a></button>
+          <button class = 'button font_logo' ><a href="{{ url_for('index') }}"> HOME </a></button>
       </div>
       <!-- button for menu page -->
      <div class = 'buttona'>
-          <button class = 'button' ><a href="{{ url_for('menu') }}"> MENU </a></button>
+          <button class = 'button font_logo' ><a href="{{ url_for('menu') }}"> MENU </a></button>
      </div>
      <!-- button for about page -->
      <div class = 'buttonb'>
-          <button class = 'button'> <a href="{{ url_for('about') }}"> ABOUT </a></button>
+          <button class = 'button font_logo'> <a href="{{ url_for('about') }}"> ABOUT </a></button>
      </div>
      <!-- button for contact page -->
      <div class = buttonc>
-          <button class = 'button'> <a href="{{ url_for('contact') }}"> CONTACT </a> </button>
+          <button class = 'button font_logo'> <a href="{{ url_for('contact') }}"> CONTACT </a> </button>
      </div>
+     
   </div>
     <div class = 'b'>
-        <h1>ABOUT</h1>
-        <h2>here is our very intersting and very fake history</h2>
+    <div class = 'nestedgrid'>
+        <div class = 'starters'>
+          <h1> ABOUT US</h1>
+        </div>
+
+        
+        
+    </div>
     </div>
   </div>
-  
-  
-</body>
-</html>
