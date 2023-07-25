@@ -1,41 +1,89 @@
 
 /* styling the main body of the website */
 .body{
-    background-color: #DEA54B;
+    background-color: #27A3A5;
     margin: 0;
 
 }
 
 
-.grid {
-    height: 600px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    row-gap: 10px;
-    column-gap: 15px ;
-  
+@font-face {
+    font-family: 'BarrioRegular'; /* The name you want to use for your font */
+    src: url('../static/fonts/Barrio-Regular.ttf') format('truetype');
+         
+    /* Add any additional font properties if needed */
   }
 
+.font_logo{
+    font-family: 'BarrioRegular';
+}
+
+.grid {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 100px 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 0px;
+    column-gap: 0px;
+    margin: none;
+  }
+
+
+  
 .a {
-    grid-column: span 5;
+    display: grid;
+    grid-column: span 4;
+    grid-row-start: 1;
+    grid-row-end: span 1;
+    background-color: #e5771e;
+    display: grid; /* Add this line to make .a a grid container */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Define columns for the inner grid */
+    grid-template-rows: 1fr; /* Define rows for the inner grid */
+    box-sizing: border-box;
+
+
+/* 
+    grid-column: span 6;
     grid-row-start: 1;
     grid-row-end: span 1; 
     background-color: #d741a7;
-    display: grid; /* Add this line to make .a a grid container */
-    grid-template-columns: repeat(6, 1fr); /* Define columns for the inner grid */
-    grid-template-rows: 1fr; /* Define rows for the inner grid */
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+    grid-template-rows: 1fr;  */
 } 
+
+
 
 .b {
     grid-column: span 5;
     grid-row-start: 2;
-    grid-row-end: span 5;  
-    color: white; 
-  
-
+    grid-row-end: 7;  
 }
+
+.background{
+    /* background-image: url('images/blog_background.png');
+    background-repeat: repeat;
+    background-position: center;
+    background-size: cover;
+    height: 90vh; */
+background-color: #27A3A5;}
+
+
+.c{
+    grid-column-start: 2;
+    grid-column-end: span 2;
+    grid-row-start: 3;
+    grid-row-end: 7;
+    display: block;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10%;
+   
+    }
+
+
 
 /* .overlap {
     position: absolute; 
@@ -50,7 +98,7 @@
 .buttond{
     grid-row-start: 1; 
     grid-row-end: span 1;
-    grid-column-start: 2;
+    grid-column-start: 1;
     grid-column-end: span 1; 
     display: flex;
     align-items: center;
@@ -61,7 +109,7 @@
 .buttona{
     grid-row-start: 1; 
     grid-row-end: span 1;
-    grid-column-start: 3;
+    grid-column-start: 2;
     grid-column-end: span 1; 
     display: flex;
     align-items: center;
@@ -71,7 +119,7 @@
 .buttonc{
     grid-row-start: 1; 
     grid-row-end: span 1;
-    grid-column-start: 4; 
+    grid-column-start: 3; 
     grid-column-end: span 1;
     display: flex;
     align-items: center;
@@ -82,7 +130,7 @@
 
     grid-row-start: 1; 
     grid-row-end: span 1;
-    grid-column-start: 5; 
+    grid-column-start: 4; 
     grid-column-end: span 1;
     display: flex;
     align-items: center;
@@ -91,7 +139,7 @@
 }
 
 .button {
-  background-color: #d741a7;
+  background-color: inherit;
   color: #5398BE;
   height: 50%;
   width: 55%;
@@ -99,6 +147,9 @@
   outline: none;
   border: none;
   font-size: 2rem;
+  display: flex; /* Add flex display to the buttons */
+  align-items: center; /* Vertically center the button content */
+  justify-content: center; /* Horizontally center the button content */
 }
 
 /* .button:hover{
@@ -106,13 +157,13 @@
 } */
 
 .button a {
-    color: #5398BE; /* Set the text color for the anchor element */
+    color: #C3D8BF; /* Set the text color for the anchor element */
     text-decoration: none; /* Optional: Remove underline from the link */
 }
 
 
 .button a:hover {
-    color: #3a1772;
+    color: #27A3A5;
  /* Set the text color on hover */
 }
 
@@ -123,25 +174,92 @@ persian indigo: #3a1772
 celestial blue: #5398BE
 naples yellow: #F2CD5D
 earth yellow: #DEA54B */
-.nopalito-div{
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
+
+/* @media only screen and (max-width: 700px){
+    .button{
+        font-size: 12px !important;
+        width: 40%;
+        margin: none;
+        padding: none;
+    }
+
+    .grid{
+        row-gap: 0%;
+        column-gap: 0%;
+    }
+
+} */
+
+
+@media only screen and (max-width: 800px) {
+    .a {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+
+    .button {
+        width: 80%;
+        font-size: 20px;
+    }
+
+    .nopalito_logo{
+        font-size: 5rem !important;
+    }
 }
 
-.home-info{
+@media only screen and (max-width: 1200px) and (min-width: 800px){
+    .button{
+        font-size: 25px;
+    }
+
+    .nopalito_logo{
+        font-size: 8rem !important;
+    }
+}
+
+@media (max-width: 800px) {
+    /* body {
+        background-image: url('images/mobile_background.png');
+        background-repeat: repeat;
+        background-position: center;
+        background-size: cover;
+        
+    }*/} 
+
+    .pink_font{
+        color: #E74F8C;
+    }
+
+    .blue_font{
+        color: #27A3A5;
+    }
+
+    .orange_font{
+        color: #e5771e;
+    }
+
+    .green_font{
+        color: #C3D8BF
+
+    }
+
+
+.nopalito_logo{
+    color: #e5771e;
+    font-family: 'BarrioRegular';
+    font-size: 10em;
+    padding: 0%;
+    margin: 2%;
+}
+
+.nopalito_info{
+    color: #C3D8BF;
+    font-family: 'BarrioRegular';
+    font-size: 3em;
+    padding: 0%;
+    margin: 2%;
+    text-align: center;
     display: flex;
     justify-content: center;
-    align-items: center;
-  
 }
 
-.logo{
-    display: block;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-
-
-}
