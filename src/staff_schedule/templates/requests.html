@@ -1,0 +1,85 @@
+<!-- requests.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Requests</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login-style.css') }}">
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f2cd5d;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        form {
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Requests</h1>
+    <h2>Unresolved Requests:</h2>
+    <table>
+        <tr>
+            <th>Staff ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Reason</th>
+            <th>Actions</th>
+        </tr>
+        {% for request in unresolved_requests %}
+        <tr>
+            <td>{{ request[0] }}</td>
+            <td>{{ request[1] }}</td>
+            <td>{{ request[2] }}</td>
+            <td>{{ request[3] }}</td>
+            <td>
+                <form method="post" action="{{ url_for('process_request', request_id=request[4], status='approve') }}">
+                    <button type="submit">Approve</button>
+                </form>
+                <form method="post" action="{{ url_for('process_request', request_id=request[4], status='decline') }}">
+                    <button type="submit">Decline</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Resolved Requests:</h2>
+    <table>
+        <tr>
+            <th>Staff ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Reason</th>
+            <th>Status</th>
+        </tr>
+        {% for request in resolved_requests %}
+        <tr>
+            <td>{{ request[0] }}</td>
+            <td>{{ request[1] }}</td>
+            <td>{{ request[2] }}</td>
+            <td>{{ request[3] }}</td>
+            <td>{% if request[4] %}Approved{% else %}Declined{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <button onclick="window.location.href='/admin_page'">Back</button>
+
+</body>
+</html>
