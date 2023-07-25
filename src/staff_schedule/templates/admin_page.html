@@ -1,0 +1,14 @@
+<!-- admin_page.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage-style.css') }}">
+</head>
+<body>
+    <h1>Admin Page</h1>
+    <button>Edit Schedule</button>
+    <button onclick="window.location.href='/requests'">Time Off Requests</button>
+    <button onclick="window.location.href='/'">Sign Out</button>
+</body>
+</html>
