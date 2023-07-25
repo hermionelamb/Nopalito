@@ -17,40 +17,52 @@
     <div class = 'a'>
         <!-- button for home page -->
         <div class = 'buttond'>
-            <button class = 'button' ><a href="{{ url_for('index') }}"> HOME </a></button>
+            <button class = 'button font_logo ' ><a href="{{ url_for('index') }}"> HOME </a></button>
         </div>
         <!-- button for menu page -->
        <div class = 'buttona'>
-            <button class = 'button' ><a href="{{ url_for('menu') }}"> MENU </a></button>
+            <button class = 'button font_logo ' ><a href="{{ url_for('menu') }}"> MENU </a></button>
        </div>
        <!-- button for about page -->
        <div class = 'buttonb'>
-            <button class = 'button'> <a href="{{ url_for('about') }}"> ABOUT </a></button>
+            <button class = 'button font_logo'> <a href="{{ url_for('about') }}"> ABOUT </a></button>
        </div>
        <!-- button for contact page -->
        <div class = buttonc>
-            <button class = 'button'> <a href="{{ url_for('contact') }}"> CONTACT </a> </button>
+            <button class = 'button font_logo'> <a href="{{ url_for('contact') }}"> CONTACT </a> </button>
        </div>
        
     </div>
-    <div class = 'b'>
+    <div class = 'b background'>
+      <div class = 'c'>
          <!-- noplaito name -->
          <div  class = 'nopalito-div'>
-        <img src = "{{url_for('static', filename = 'images/logo.png' )}}" class = 'logo'> 
-        </div>
-        <div class='home-info'>
-        <h2> <br> Join us in the heart of Soho for a trip to Mexico </h2>
-        </br>
-        <h3>"Indulge in authentic flavors and vibrant culture 
-          at our Mexican restaurant, where every bite takes you on a culinary adventure."</h3>
-        </div>
-        <!-- <img src="{{url_for('static', filename = 'images/nopalito_background.jpg' )}}" class = 'overlap'> -->
-    </div>
+        <!-- <img src = "{{url_for('static', filename = 'images/nopalito_logo.png' )}}" class = 'logo'>  -->
+        <h1 class = 'nopalito_logo' >NOPALITO</h1>
+      </div>
+        <h2 class = 'nopalito_info'> <br> Join us in the heart of Soho for a trip to Mexico </h2>
+        
+      </div>
+    <div>
+      
+    <div class = 'empty_cont2'> </div>
   </div>
-  
-  
+
+  <!-- <div class="weird-shape">
+    <svg id="visual" viewBox="0 0 900 600" width="900" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+      <g transform="translate(435.261760989752 298.00498005585894)">
+        <path d="M139.9 -181C170.9 -140.7 178.5 -86.7 194.6 -29.3C210.7 28.1 235.2 89.1 219.3 136C203.4 183 147 216 88.4 233C29.9 250 -30.9 250.9 -73.1 225C-115.2 199.1 -138.8 146.4 -160.1 98C-181.5 49.6 -200.5 5.4 -193.5 -34.1C-186.5 -73.6 -153.3 -108.4 -116.7 -147.8C-80.1 -187.2 -40.1 -231.1 7.2 -239.6C54.4 -248.2 108.8 -221.4 139.9 -181" fill="#C3D8BF"></path>
+      </g>
+    
+
+    </svg>
+  </div> --> 
 </body>
 </html>
+
+
+
+
 
 
 
