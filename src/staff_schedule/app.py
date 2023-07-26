@@ -4,7 +4,7 @@
 
 from flask import Flask, render_template, redirect, url_for, request, session
 import psycopg2
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from flask_login import UserMixin
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
@@ -20,7 +20,7 @@ DB_HOST = 'localhost'
 DB_NAME = 'Staff_Schedule'
 DB_USER = 'postgres'
 # PUT PASSWORD IN
-DB_PASSWORD = ''
+DB_PASSWORD = 'P1n3apple01*!'
 
 # Establish the connection to the PostgreSQL database
 connection = psycopg2.connect(
@@ -211,6 +211,9 @@ def timetable():
     cursor.execute('SELECT * FROM "Staff_Schedule"."Shifts"')
     shifts_data = cursor.fetchall()
 
+    cursor.execute('SELECT * FROM "Staff_Schedule"."Time Off" WHERE approved = True')
+    time_off_data = cursor.fetchall()
+
     cursor.close()
 
     # Create a timetable data structure to store shift information
@@ -228,11 +231,41 @@ def timetable():
     for staff_id in timetable_data:
         timetable_data[staff_id].sort(key=lambda x: x['start_time_day'])
 
-    # Get the dates of the first day of the week for each column
-    # and convert them to datetime.date objects
-    column_dates = [date(2023, 7, 24) + timedelta(days=i) for i in range(7)]
 
-    return render_template('timetable.html', staff_data=staff_data, timetable_data=timetable_data, column_dates=column_dates)
+    def get_mon(d):
+        days_sub = d.weekday()
+        mon_of_week = d - timedelta(days=days_sub)
+
+        return mon_of_week
+
+    def week_values(mon_date):
+        week = []
+        for i in range(7):
+            week.append(str(mon_date + timedelta(days=i)))
+
+        return week
+
+
+    weeks_21 = {}
+    this_monday = get_mon(date.today())
+
+    for i in range(-10, 11):
+        weeks_21[i] = week_values(this_monday + timedelta(weeks=i))
+
+
+    relative_week = int(request.args.get('relative_week', session.get('relative_week', 0)))
+
+    session['relative_week'] = relative_week
+
+
+    return render_template('timetable.html', staff_data=staff_data, timetable_data=timetable_data,
+                            time_off_data=time_off_data, weeks_21=weeks_21, relative_week=relative_week)
+
+
+def str_to_date(date_str):
+    return datetime.strptime(date_str, '%Y-%m-%d').date()
+
+app.jinja_env.filters['str_to_date'] = str_to_date
 
 if __name__ == '__main__':
     app.run(debug=True)
