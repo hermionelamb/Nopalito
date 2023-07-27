@@ -1,0 +1,124 @@
+<!-- personal_timetable.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timetable</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='timetable-style.css') }}">
+    <style>
+        .red-square {
+            background-color: #2E294E;
+        }
+    </style>
+</head>
+<body>
+    <h1>Timetable</h1>
+
+    <div>
+        <span id="rel_week" class="white-text">{{ relative_week }}</span>
+    </div>
+
+    <div class="date-navigation">
+        <button id="prev-week" onclick="changeWeek(-1, rel_week)">&lt;</button>
+        <button id="next-week" onclick="changeWeek(1, rel_week)">&gt;</button>
+    </div>
+    
+    {% set column_dates = weeks_21[relative_week] %}
+    
+    <table>
+        <!-- Header row with days of the week -->
+        <tr>
+            <th class="id-column">ID</th>
+            <th class="name-column">Name</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
+
+        <tr>
+            <th></th>
+            <th></th>
+            {% for i in range(7) %}
+                <th>{{ column_dates[i] }}</th>
+            {% endfor %}
+        </tr>
+        <!-- Add rows for employee names and schedule data -->
+        {% set days_off = {} %}
+        {% for t_o_r in time_off_data %}
+            {% if t_o_r[0] not in days_off %}
+                {% set _ = days_off.update({t_o_r[0]: [[t_o_r[1], t_o_r[2]]]}) %}
+            {% else %}
+                {% set _ = days_off[t_o_r[0]].append([t_o_r[1], t_o_r[2]]) %}
+            {% endif %}
+        {% endfor %}
+
+        {% for emp_data in staff_data %}
+            {% if emp_data[0] == staff_id_val %}
+           
+                <tr>
+                    <td class="id-column">{{ emp_data[0] }}</td>
+                    <td class="name-column">{{ emp_data[3] }}</td>
+                    {% set shifts = timetable_data[emp_data[0]] %}
+                    {% set column_shifts = {} %}
+
+                    {% for shift in shifts %}
+                        {% set shift_date_str = shift.start_time_day.strftime('%Y-%m-%d') %}
+                        {% if shift_date_str not in column_shifts %}
+                            {% set _ = column_shifts.update({shift_date_str: [shift]}) %}
+                        {% else %}
+                            {% set _ = column_shifts[shift_date_str].append(shift) %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% for i in range(7) %}
+                        {% set column_date_str = column_dates[i] %}
+                        {% set shifts_for_day = column_shifts.get(column_date_str, []) %}
+                        {% if shifts_for_day %}
+                            <td>
+                                {% for shift in shifts_for_day %}
+                                    {% set shift_start_time_str = shift.start_time_day.strftime('%H:%M') %}
+                                    {% set shift_end_time_str = shift.end_time_day.strftime('%H:%M') %}
+                                    {{ shift_start_time_str }} - {{ shift_end_time_str }}<br>
+                                {% endfor %}
+                            </td>
+                        {% elif days_off[emp_data[0]] %}
+                            {% for d_o in days_off[emp_data[0]] %}
+                                {% if (d_o[0] <= column_dates[i] | str_to_date) and (d_o[1] > column_dates[i] | str_to_date) %}
+                                    <td class="red-square"></td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endif %}
+        {% endfor %}
+
+    </table>
+
+    <button onclick="window.location.href='/dashboard'">Back</button>
+
+    <script>
+        let num = parseInt(sessionStorage.getItem('relative_week') || '0');
+
+
+        function changeWeek(weeks, rel_week) {
+        
+            num = num + weeks;
+            rel_week.textContent = num.toString();
+
+            sessionStorage.setItem('relative_week', num.toString());
+
+            window.location.href = `/personal_timetable?relative_week=${num}`;
+        }
+    
+        changeWeek(0);
+    </script>               
+</body>
+</html>
