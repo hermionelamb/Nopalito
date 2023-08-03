@@ -1,15 +1,19 @@
 /* homepage-style.css */
+
+/* Styling for the entire body of the homepage */
 body {
     font-family: 'Gill Sans', sans-serif;
     text-align: center;
     margin: 50px;
 }
 
+/* Styling for the main heading (h1) */
 h1 {
     color: #333;
     margin-bottom: 30px;
 }
 
+/* Styling for buttons */
 button {
     margin: 10px auto;
     padding: 10px 20px;
@@ -23,6 +27,8 @@ button {
     width: 20%;
 }
 
+
+/* Styling for the button on hover */
 button:hover {
     background-color: #DEA54B;
 }
