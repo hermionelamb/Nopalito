@@ -8,8 +8,8 @@
 
 <body>
     <h1>Profile</h1>
-    <h2>Hello, {{ first_name, surname }}</h2>
-    <button onclick="window.location.href='/timetable'">View Timetable</button>
+    <h2>Hello, {{ first_name | capitalize }} {{ surname | capitalize }}</h2>
+    <button onclick="window.location.href='/personal_timetable'">View Timetable</button>
     <button onclick="window.location.href='/request_t_o'">Request Time Off</button>
     <button onclick="window.location.href='/'">Sign Out</button>
 </body>
