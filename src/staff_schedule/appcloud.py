@@ -35,7 +35,7 @@ app.config['SECRET_KEY'] = 'thisisasecretkey'
 # DATABASE CONNECTION
 
 # Set up connection to database
-DB_HOST = 'nopalitodb.c9ezdaye8tbs.eu-north-1.rds.amazonaws.com'
+DB_HOST = ''
 DB_NAME = 'Nopalito_DB_1'
 DB_USER = 'postgres'
 # PUT PASSWORD IN
