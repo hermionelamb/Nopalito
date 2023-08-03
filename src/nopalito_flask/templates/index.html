@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Nopalito</title>
+  <link rel="icon" href = '../static/images/n-logo.png'>
   <!-- linking the necessary style sheets -->
   <link rel="stylesheet"type='text/css' href="{{url_for('static', filename='index.css')}}">
-  <link rel="stylesheet"type='text/css' href="{{url_for('static', filename='home.css')}}">
-
+  
 </head>
 <body class = 'body'>
   <div class = 'grid'>
@@ -23,14 +23,13 @@
        <div class = 'buttona'>
             <button class = 'button font_logo ' ><a href="{{ url_for('menu') }}"> MENU </a></button>
        </div>
-       <!-- button for about page -->
-       <div class = 'buttonb'>
-            <button class = 'button font_logo'> <a href="{{ url_for('about') }}"> ABOUT </a></button>
-       </div>
        <!-- button for contact page -->
        <div class = buttonc>
             <button class = 'button font_logo'> <a href="{{ url_for('contact') }}"> CONTACT </a> </button>
        </div>
+       <div class = buttone>
+        <button class = 'button font_logo'> <a href="{{ url_for('reservation_form') }}"> BOOK </a> </button>
+      </div>
        
     </div>
     <div class = 'b background'>
@@ -43,22 +42,45 @@
         <h2 class = 'nopalito_info'> <br> Join us in the heart of Soho for a trip to Mexico </h2>
         
       </div>
-    <div>
-      
-    <div class = 'empty_cont2'> </div>
+      <div class = 'our-story-banner'> 
+        <h1>our sToRy</h1>
+      </div>
+      <div>
+      <div class = 'about-us'> 
+       
+        <p>
+          Noplaito: Where Authentic Mexican Flavors Meet Balanced Nutrition.
+           Our Culinary Visionaries Celebrate Tradition, 
+           Offering Healthier Alternatives with Local and Organic Ingredients.
+            A Unique Dining Experience Awaits!
+        </p>
+      </div>
+    </div>
+     
+      <div class = 'our-philosophy-banner'> 
+        <h1>our philosophy</h1><br>
+
+      </div>
+      <div class = 'about-us'> 
+        
+        <p>
+          Embrace Authentic Mexican Flavors, Embrace Health. Founded on Culinary Heritage, We Redefine Classics with Wholesome Choices. 
+          Local, Organic, Unforgettable -  Indulge in a Truly Unique Dining Adventure!
+        </p>
+
+      </div>
+      <div class = 'book-now-banner'> 
+        <a href="{{ url_for('reservation_form') }}">
+        <h1> BOOK NOW!</h1>
+        </a>
+      </div>
+
   </div>
 
-  <!-- <div class="weird-shape">
-    <svg id="visual" viewBox="0 0 900 600" width="900" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
-      <g transform="translate(435.261760989752 298.00498005585894)">
-        <path d="M139.9 -181C170.9 -140.7 178.5 -86.7 194.6 -29.3C210.7 28.1 235.2 89.1 219.3 136C203.4 183 147 216 88.4 233C29.9 250 -30.9 250.9 -73.1 225C-115.2 199.1 -138.8 146.4 -160.1 98C-181.5 49.6 -200.5 5.4 -193.5 -34.1C-186.5 -73.6 -153.3 -108.4 -116.7 -147.8C-80.1 -187.2 -40.1 -231.1 7.2 -239.6C54.4 -248.2 108.8 -221.4 139.9 -181" fill="#C3D8BF"></path>
-      </g>
-    
-
-    </svg>
-  </div> --> 
 </body>
 </html>
+
+
 
 
 
