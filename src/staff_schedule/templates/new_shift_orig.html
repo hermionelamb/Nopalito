@@ -1,0 +1,289 @@
+<!-- new_shift.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create New Shift</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login-style.css') }}">
+</head>
+<body>
+    <h1>Create New Shift</h1>
+
+    <!-- The form to input shift details -->
+    <form id="shiftForm" action="{{ url_for('new_shift') }}" method="post">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+        <label for="start_time">Start Time:</label>
+        <input type="time" id="start_time" name="start_time" required><br><br>
+        <label for="end_time">End Time:</label>
+        <input type="time" id="end_time" name="end_time" required><br><br>
+        <label for="job">Job</label>
+        <select id="job" name="job" required>
+            <option value="waiter">Waiter</option>
+            <option value="chef">Chef</option>
+            <option value="cleaner">Cleaner</option>
+        </select><br><br>
+        <input type="submit" value="Search"><br><br>
+
+        <!-- Hidden input field to store selected staff IDs -->
+        <input type="hidden" name="staff_ids" id="staffIdsInput">
+
+    </form>
+
+    <!-- Table to display available staff members for the selected shift -->
+    <table id="resultTable">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Job</th>
+            <th>Availability</th>
+            <th>Select</th>
+        </tr>
+    </table><br><br>
+
+    <!-- Button to create shifts when staff members are selected -->
+    <div id="createShiftsButton" style="display: none;">
+        <button onclick="createShifts()">Create Shifts</button>
+    </div><br><br>
+
+    <!-- Button to navigate back to the "Edit Schedule" page -->
+    <button onclick="window.location.href='/admin_page'">Back</button>
+
+    <!-- Hidden divs to store JSON data as HTML data attributes -->
+    <div id="availData" data-avail="{{ avail_data }}" style="display: none;"></div>
+    <div id="staffData" data-staff="{{ staff_data }}" style="display: none;"></div>
+    <div id="timeoffData" data-timeoff="{{ time_off }}" style="display: none;"></div>
+    <div id="shiftsData" data-shifts="{{ shifts_data }}" style="display: none;"></div>
+
+    <script>
+        // Access the form element
+        const form = document.getElementById('shiftForm');
+
+        // Access the result table
+        const resultTable = document.getElementById('resultTable');
+
+        // Access availability data
+        const availDataElement = document.getElementById('availData');
+        const availDataJSON = availDataElement.dataset.avail;
+        const availData = JSON.parse(availDataJSON);
+
+        console.log(availData)
+
+        // Access staff data
+        const staffDataElement = document.getElementById('staffData');
+        const staffDataJSON = staffDataElement.dataset.staff;
+        const staffData = JSON.parse(staffDataJSON);
+
+        console.log(staffData)
+
+        // Access timeoff data
+        const timeoffDataElement = document.getElementById('timeoffData');
+        const timeoffDataJSON = timeoffDataElement.dataset.timeoff;
+        const timeoffData = JSON.parse(timeoffDataJSON);
+
+        console.log(timeoffData)
+
+        // Access shifts data
+        const shiftsDataElement = document.getElementById('shiftsData');
+        const shiftsDataJSON = shiftsDataElement.dataset.shifts;
+        const shiftsData = JSON.parse(shiftsDataJSON);
+
+        console.log(shiftsData)
+        
+
+        // Add event listener for form submission
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission, so the page doesn't reload
+
+            // Get the values entered in the form
+            const dateValue = document.getElementById('date').value;
+            const startTimeValue = document.getElementById('start_time').value;
+            const endTimeValue = document.getElementById('end_time').value;
+            const jobValue = document.getElementById('job').value;
+
+            console.log(dateValue)
+            console.log(startTimeValue)
+            console.log(endTimeValue)
+            console.log(jobValue)
+
+            // Define a mapping of weekdays to their numeric representation
+            var weekDays = {'Monday':1, 'Tuesday':2, 'Wednesday':3, 'Thursday':4, 'Friday':5, 'Saturday':6, 'Sunday':0}
+
+            // Function to get the numeric representation of the day of the week
+            function getDayPosition(day) {
+                return weekDays[day]
+            }
+
+            // Function to convert time format from "hh:mm" to a Date object
+            function convertTimeFormat1(timeStr) {
+                if (!timeStr) return null;
+                const [hours, minutes] = timeStr.split(":");
+                return new Date(0, 0, 0, hours, minutes);
+            }
+
+            // Function to convert time format from "hh:mm" to "hh:mm:ss"
+            function convertTimeFormat2(timeStr) {
+                if (!timeStr) return null;
+                const seconds = "00";
+                const [hours, minutes] = timeStr.split(":");
+                return `${hours}:${minutes}:${seconds}`;
+            }
+
+            // Filter time-off data to include only relevant entries for the selected date
+            const filteredTimeOff = timeoffData.filter(data => {
+                const timeoffStartDate = data[2] <= dateValue;
+                const timeoffEndDate = data[3] > dateValue;
+
+                return timeoffStartDate && timeoffEndDate;
+            });
+
+            console.log(filteredTimeOff)
+            // Get staff IDs with time-off for the selected date
+            const staffIdsWithTimeoff = filteredTimeOff.map(data => data[1])
+
+            // Filter shifts data to include only shifts that match the selected start and end time
+            const filteredShifts = shiftsData.filter(data => {
+                const shiftsStart = `${data[1]}` == `${dateValue}T${convertTimeFormat2(startTimeValue)}`;
+                const shiftsEnd = `${data[2]}` == `${dateValue}T${convertTimeFormat2(endTimeValue)}`;
+
+                return shiftsStart && shiftsEnd;
+            });
+
+            console.log(filteredShifts)
+            // Get staff IDs with existing shifts for the selected date and time
+            const staffIdsWithShifts = filteredShifts.map(data => data[3])
+
+            // Filter staff data to include only staff with the selected job type
+            const filteredStaff = staffData.filter(data => {
+                const staffJob = data[4].trim() === jobValue;
+
+                console.log(data[4])
+                console.log(jobValue)
+                return staffJob;
+            });
+
+            console.log(filteredStaff)
+            // Get staff IDs with the selected job type
+            const staffIdsWithJob = filteredStaff.map(data => data[0]);
+
+            // Filter availability data to include only available staff for the selected shift
+            const filteredAvail = availData.filter(data => {
+                const staffId = data[0];
+                const availDay = getDayPosition(data[1]) === new Date(dateValue).getDay();
+                const availStartTime = convertTimeFormat1(data[2]) <= convertTimeFormat1(startTimeValue);
+                const availEndTime = convertTimeFormat1(data[3]) >= convertTimeFormat1(endTimeValue);
+
+                return staffIdsWithJob.includes(staffId) && !staffIdsWithTimeoff.includes(staffId) && !staffIdsWithShifts.includes(staffId) && availDay && availStartTime && availEndTime;
+            });
+
+            console.log(filteredAvail)
+
+            // Update the table to display the available staff for the selected shift
+            updateTable(filteredAvail);
+        });
+
+
+        // Function to convert time format from "hh:mm:ss" to "hh:mm"
+        function convertTimeFormat(timeStr) {
+                const [hours, minutes, seconds] = timeStr.split(":");
+                return `${hours}:${minutes}`;
+            }
+        
+        // Function to update the table with available staff data
+        function updateTable(filteredAvail) {
+
+            // Remove all rows from the result table except the header
+            while (resultTable.rows.length > 1) {
+                resultTable.deleteRow(1);
+            }
+
+            // Variable to track whether at least one checkbox is checked
+            let atLeastOneCheckboxChecked = false;
+
+            // Add a new row for each staff member in the filtered availability data
+            filteredAvail.forEach(data => {
+                const newRow = resultTable.insertRow();
+
+                // Add cells for staff ID, name, job, availability, and a checkbox to select the staff
+                const idCell = newRow.insertCell();
+                idCell.textContent = data[0];
+
+                const staffId = data[0];
+                const staffInfo = staffData.find(staff => staff[0] === staffId);
+
+                const nameCell = newRow.insertCell();
+                // nameCell.textContent = `${staffInfo[1].toUpperCase()} ${staffInfo[2].toUpperCase()}`;
+                nameCell.textContent = staffInfo[3];
+
+                const jobCell = newRow.insertCell();
+                jobCell.textContent = staffInfo[4].toUpperCase();
+
+                const availCell = newRow.insertCell();
+                availCell.textContent = `${convertTimeFormat(data[2])} - ${convertTimeFormat(data[3])}`;
+
+                const selectCell = newRow.insertCell();
+                const checkBox = document.createElement('input');
+                checkBox.type = 'checkbox';
+                selectCell.appendChild(checkBox);
+
+
+                // Add an event listener to checkboxes to update the "Create Shifts" button visibility
+                checkBox.addEventListener('click', () => {
+                    atLeastOneCheckboxChecked = [...resultTable.querySelectorAll('input[type="checkbox"]')].some(checkbox => checkbox.checked);
+                    if (atLeastOneCheckboxChecked) {
+                        document.getElementById('createShiftsButton').style.display = 'block';
+                    } else {
+                        document.getElementById('createShiftsButton').style.display = 'none';
+                    }
+                });
+
+            });
+
+            // Hide the "Create Shifts" button when the table is updated
+            document.getElementById('createShiftsButton').style.display = 'none';
+        }
+
+        // Function to create shifts with the selected staff and shift details
+        function createShifts() {
+            const selectedStaff = [...resultTable.querySelectorAll('input[type="checkbox"]:checked')].map(checkbox => checkbox.parentElement.parentElement.cells[0].textContent);
+            const startTime = document.getElementById('start_time').value;
+            const endTime = document.getElementById('end_time').value;
+            const dateValue = document.getElementById('date').value;
+            const jobValue = document.getElementById('job').value;
+
+            // Create hidden input fields to include the data in the form
+            const form = document.getElementById('shiftForm');
+
+            const staffIdsInput = document.getElementById('staffIdsInput');
+            staffIdsInput.value = JSON.stringify(selectedStaff);
+
+            const inputStartTime = document.createElement('input');
+            inputStartTime.type = 'hidden';
+            inputStartTime.name = 'start_time';
+            inputStartTime.value = startTime;
+            form.appendChild(inputStartTime);
+
+            const inputEndTime = document.createElement('input');
+            inputEndTime.type = 'hidden';
+            inputEndTime.name = 'end_time';
+            inputEndTime.value = endTime;
+            form.appendChild(inputEndTime);
+
+            const inputDate = document.createElement('input');
+            inputDate.type = 'hidden';
+            inputDate.name = 'date';
+            inputDate.value = dateValue;
+            form.appendChild(inputDate);
+
+            const inputJob = document.createElement('input');
+            inputJob.type = 'hidden';
+            inputJob.name = 'job';
+            inputJob.value = jobValue;
+            form.appendChild(inputJob);
+
+            // Submit the form to create shifts on the server-side
+            form.submit();
+        }
+    </script>
+
+</body>
+</html>
