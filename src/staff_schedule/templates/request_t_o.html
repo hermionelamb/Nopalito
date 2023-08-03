@@ -8,10 +8,16 @@
 </head>
 <body>
     <h1>Request Time Off</h1>
-    <h2>Hello, {{ first_name, surname, staff_id }}</h2>
+
+    <!-- Display a personalized greeting to the user -->
+    <h2>{{ first_name | capitalize }} {{ surname | capitalize }}</h2>
+
+    <!-- Display an error message if there is an error in the form submission -->
     {% if error %}
         <p style="color: red;">{{ error }}</p>
     {% endif %}
+
+    <!-- Form to request time off -->
     <form method="post" action="{{ url_for('request_t_o') }}">
         <label for="start_date">Start Date:</label>
         <input type="date" id="start_date" name="start_date" required><br><br>
@@ -22,6 +28,7 @@
         <input type="submit" value="Request">
     </form>
 
+    <!-- Button to navigate back to the dashboard -->
     <button onclick="window.location.href='/dashboard'">Back</button>
     
 </body>
