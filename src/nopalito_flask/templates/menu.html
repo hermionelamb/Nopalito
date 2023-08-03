@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Nopalito</title>
+  <link rel="icon" href = '../static/images/n-logo.png'>
   <!-- linking necessary style sheets -->
   <link rel="stylesheet"type='text/css' href="{{url_for('static', filename='index.css')}}">
   <link rel="stylesheet"type='text/css' href="{{url_for('static', filename='menu.css')}}">
@@ -20,14 +21,14 @@
      <div class = 'buttona'>
           <button class = 'button font_logo' ><a href="{{ url_for('menu') }}"> MENU </a></button>
      </div>
-     <!-- button for about page -->
-     <div class = 'buttonb'>
-          <button class = 'button font_logo'> <a href="{{ url_for('about') }}"> ABOUT </a></button>
-     </div>
+     
      <!-- button for contact page -->
      <div class = buttonc>
           <button class = 'button font_logo'> <a href="{{ url_for('contact') }}"> CONTACT </a> </button>
      </div>
+     <div class = buttone>
+      <button class = 'button font_logo'> <a href="{{ url_for('reservation_form') }}"> BOOK </a> </button>
+    </div>
      
   </div>
     <div class = 'b'>
@@ -45,7 +46,7 @@
               <h4 class = 'price'> 4.95 </h4>
             </div>
             <div class="gallery-item">
-              <h1> Salsa verde, roja and totopos</h1>
+              <h1> Salsa Verde, Roja and Totopos</h1>
               <p class = 'thumbnail'> Tangy green and smoky red salsas paired with crispy
                 tortilla chips for a flavorful appetizer.</p>
                 
@@ -65,7 +66,7 @@
               <h4 class = 'price'> 6.95 </h4>
             </div>
             <div class="gallery-item">
-              <h1> Queso fundido and totopos</h1>
+              <h1> Queso Fundido and Totopos</h1>
               <h3> with chorizo or chiltomate</h3>
               <p class = 'thumbnail'>  Tangy green and smoky red salsas paired with crispy
                 tortilla chips for a flavorful appetizer.</p>
@@ -87,8 +88,8 @@
         <div class="main">
           <div class="gallery">
             <div class="menu-item">
-              <h1> Burritto, Enchilada or Fajita</h1>
-              <h2> Choose between </h2>
+              <h1> Burritto OR Enchilada OR Fajita</h1>
+              
               <h3> Choose your filling</h3>
             
               <p class = 'thumbnail'>    
@@ -102,7 +103,7 @@
             <div class="menu-item">
               <h1> Tacos</h1>
               <h2> Choose from either soft or hard tacos with 
-                one of the following fillindgs:
+                one of the following fillings:
               </h2>
               <p class = 'thumbnail'>
                 Chicken 
