@@ -1,19 +1,24 @@
 /* timetable-style.css */
+
+/* Body styling */
 body {
     font-family: 'Gill Sans', sans-serif;
     text-align: center;
     margin: 50px;
 }
 
+/* Heading (h1) */
 h1 {
     color: #333;
     margin-bottom: 30px;
 }
 
+/* Styling for the date navigation container */
 .date-navigation {
     margin: 20px 0;
 }
 
+/* Styling for the buttons in the date navigation */
 .date-navigation button {
     background-color: #F2CD5D;
     color: #333;
@@ -24,21 +29,24 @@ h1 {
     cursor: pointer;
 }
 
+/* Button hover effect for the date navigation buttons */
 .date-navigation button:hover {
     background-color: #DEA54B;
 }
 
+/* Styling for the element with ID 'current-date' */
 #current-date {
     margin: 0 20px;
 }
 
 
-/* timetable-grid.css */
+/* Styling for tables */
 table {
     border-collapse: collapse;
     width: 100%;
 }
 
+/* Styling for table headers and cells */
 th,
 td {
     border: 1px solid #ddd;
@@ -46,10 +54,12 @@ td {
     text-align: center;
 }
 
+/* Styling for table headers (th) */
 th {
     background-color: #f2cd5d;
 }
 
+/* Styling for even rows in the table */
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
@@ -69,17 +79,44 @@ table th[colspan] {
     padding: 8px 4px;
 }
 
+/* Styling for table cells (td) */
 table td {
     border: 1px solid #ddd;
 }
 
+/* Styling for ID column (th and td) */
 th.id-column,
 td.id-column {
-    width: 1%; /* Adjust the width as needed */
-    white-space: nowrap; /* Prevent text wrapping in the name column */
+    width: 1%;
+    white-space: nowrap;
 }
 
+/* Styling for Name column (th and td) */
 th.name-column,
 td.name-column {
-    width: 5%; /* Adjust the width as needed */
+    width: 5%;
+}
+
+/* Styling for elements with class 'white-text' */
+.white-text {
+    color: white;
+}
+
+/* Style for the back button */
+.back-button {
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #F2CD5D;
+    color: #333;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    display: block;
+    width: 30%;
+}
+
+/* Hover effect for the back button */
+.back-button:hover {
+    background-color: #DEA54B;
 }
