@@ -8,17 +8,24 @@
 </head>
 <body>
     <h2>Login</h2>
+
+    <!-- Display an error message if there is an error during login -->
     {% if error %}
         <p style="color: red;">{{ error }}</p>
     {% endif %}
+
+    <!-- Form for user login -->
     <form method="post" action="/login">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br><br>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required><br><br>
+
+        <!-- Submit button to send the login credentials to the server -->
         <input type="submit" value="Login">
     </form>
 
+    <!-- Button to navigate back to the home page -->
     <button onclick="window.location.href='/'">Back</button>
     
 </body>
