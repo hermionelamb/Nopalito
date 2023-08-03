@@ -1,15 +1,19 @@
 /* login-style.css */
+
+/* Body styling */
 body {
     font-family: 'Gill Sans', sans-serif;
     text-align: center;
     margin: 50px;
 }
 
+/* Subheading (h2) */
 h2 {
     color: #333;
     margin-bottom: 30px;
 }
 
+/* Styling for input fields */
 input {
     margin: 5px auto;
     padding: 10px 15px;
@@ -20,6 +24,18 @@ input {
     border-radius: 2px;
 }
 
+/* Styling for select elements */
+select {
+    margin: 5px auto;
+    padding: 10px 15px;
+    font-size: 16px;
+    display: block;
+    width: 30%;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+/* Styling for buttons */
 button {
     margin: 10px auto;
     padding: 10px 20px;
@@ -33,6 +49,64 @@ button {
     width: 30%;
 }
 
+/* Button hover effect */
 button:hover {
     background-color: #DEA54B;
+}
+
+/* Styling for tables */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Styling for table headers and cells */
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Styling for table headers (th) */
+th {
+    background-color: #f2cd5d;
+}
+
+/* Styling for table headers (th) */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Add border to the table */
+table {
+    border: 1px solid #ddd;
+}
+
+/* Remove border for the first row (time headers row) */
+table tr:first-child th {
+    border-top: none;
+}
+
+/* Add spacing between time headers and cells */
+table th[colspan] {
+    padding: 8px 4px;
+}
+
+/* Styling for table cells (td) */
+table td {
+    border: 1px solid #ddd;
+}
+
+/* Styling for ID column (th and td) */
+th.id-column,
+td.id-column {
+    width: 1%;
+    white-space: nowrap;
+}
+
+/* Styling for Name column (th and td) */
+th.name-column,
+td.name-column {
+    width: 5%;
 }
