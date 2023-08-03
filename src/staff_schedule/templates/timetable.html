@@ -5,6 +5,7 @@
     <title>Timetable</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='timetable-style.css') }}">
     <style>
+        /* Style for a purple square */
         .red-square {
             background-color: #2E294E;
         }
@@ -13,15 +14,18 @@
 <body>
     <h1>Timetable</h1>
 
+    <!-- Record the relative week number -->
     <div>
         <span id="rel_week" class="white-text">{{ relative_week }}</span>
     </div>
 
+    <!-- Buttons to navigate to the previous and next week -->
     <div class="date-navigation">
         <button id="prev-week" onclick="changeWeek(-1, rel_week)">&lt;</button>
         <button id="next-week" onclick="changeWeek(1, rel_week)">&gt;</button>
     </div>
     
+    <!-- Retrieve the dates for the columns based on the relative week -->
     {% set column_dates = weeks_21[relative_week] %}
     
     <table>
@@ -38,6 +42,7 @@
             <th>Sunday</th>
         </tr>
 
+        <!-- Row to display the dates of the week -->
         <tr>
             <th></th>
             <th></th>
@@ -45,24 +50,29 @@
                 <th>{{ column_dates[i] }}</th>
             {% endfor %}
         </tr>
+
         <!-- Add rows for employee names and schedule data -->
         {% set days_off = {} %}
         {% for t_o_r in time_off_data %}
-            {% if t_o_r[0] not in days_off %}
-                {% set _ = days_off.update({t_o_r[0]: [[t_o_r[1], t_o_r[2]]]}) %}
+            {% if t_o_r[1] not in days_off %}
+                {% set _ = days_off.update({t_o_r[1]: [[t_o_r[2], t_o_r[3]]]}) %}
             {% else %}
-                {% set _ = days_off[t_o_r[0]].append([t_o_r[1], t_o_r[2]]) %}
+                {% set _ = days_off[t_o_r[1]].append([t_o_r[2], t_o_r[3]]) %}
             {% endif %}
         {% endfor %}
 
         {% for emp_data in staff_data %}
            
             <tr>
+                <!-- Employee ID and Name columns -->
                 <td class="id-column">{{ emp_data[0] }}</td>
                 <td class="name-column">{{ emp_data[3] }}</td>
+
+                <!-- Get the shifts for the employee -->
                 {% set shifts = timetable_data[emp_data[0]] %}
                 {% set column_shifts = {} %}
 
+                <!-- Organize the shifts into a dictionary by date -->
                 {% for shift in shifts %}
                     {% set shift_date_str = shift.start_time_day.strftime('%Y-%m-%d') %}
                     {% if shift_date_str not in column_shifts %}
@@ -72,9 +82,12 @@
                     {% endif %}
                 {% endfor %}
 
+                <!-- Display the shifts for each day of the week -->
                 {% for i in range(7) %}
                     {% set column_date_str = column_dates[i] %}
                     {% set shifts_for_day = column_shifts.get(column_date_str, []) %}
+
+                    <!-- If there are shifts for the day, display them -->
                     {% if shifts_for_day %}
                         <td>
                             {% for shift in shifts_for_day %}
@@ -83,14 +96,19 @@
                                 {{ shift_start_time_str }} - {{ shift_end_time_str }}<br>
                             {% endfor %}
                         </td>
+
+                    <!-- If there are no shifts for the day, check for days off -->
                     {% elif days_off[emp_data[0]] %}
                         {% for d_o in days_off[emp_data[0]] %}
                             {% if (d_o[0] <= column_dates[i] | str_to_date) and (d_o[1] > column_dates[i] | str_to_date) %}
+                                <!-- Display a red square for days off -->
                                 <td class="red-square"></td>
                             {% else %}
                                 <td></td>
                             {% endif %}
                         {% endfor %}
+
+                    <!-- If there are neither shifts nor days off, display an empty cell -->
                     {% else %}
                         <td></td>
                     {% endif %}
@@ -98,24 +116,25 @@
             </tr>
         {% endfor %}
 
-    </table>
+    </table><br><br>
 
-    <button onclick="window.location.href='/'">Back</button>
+    <!-- Button to navigate back to the homepage -->
+    <button class="back-button" onclick="window.location.href='/'">Back</button>
 
     <script>
+        // Function to change the week displayed in the timetable
         let num = parseInt(sessionStorage.getItem('relative_week') || '0');
 
-
         function changeWeek(weeks, rel_week) {
-        
             num = num + weeks;
             rel_week.textContent = num.toString();
-
             sessionStorage.setItem('relative_week', num.toString());
 
+            // Redirect to the corresponding timetable for the new week
             window.location.href = `/timetable?relative_week=${num}`;
         }
     
+        // Initialize the timetable with the default week
         changeWeek(0);
     </script>               
 </body>
