@@ -7,21 +7,34 @@
 </head>
 <body>
     <h2>Registration</h2>
+
+    <!-- Display an error message if there is an error during registration -->
     {% if error %}
         <p style="color: red;">{{ error }}</p>
     {% endif %}
+
+    <!-- Form for user registration -->
     <form method="post" action="/register">
         <label for="first_name">First Name:</label>
         <input type="text" id="first_name" name="first_name" required><br><br>
         <label for="surname">Surname:</label>
         <input type="text" id="surname" name="surname" required><br><br>
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number" name="phone_number" required><br><br>
+        <label for="ni_number">NI Number:</label>
+        <input type="text" id="ni_number" name="ni_number" required><br><br>
+        <label for="job">Job:</label>
+        <input type="text" id="job" name="job" required><br><br>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br><br>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required><br><br>
+
+        <!-- Submit button to send the registration details to the server -->
         <input type="submit" value="Register">
     </form>
 
+    <!-- Button to navigate back to the home page -->
     <button onclick="window.location.href='/'">Back</button>
     
 </body>
