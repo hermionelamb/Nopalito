@@ -66,6 +66,9 @@
     font-family: Tahoma;
   }
 
+  .main p, h1, h2, h3, h4{
+    font-family: Tahoma;
+  }
   .gallery-item .thumbnail {
     width: 240px;
     border-radius: 4px;
@@ -82,4 +85,5 @@
       width: 95%;
     }
   }
+  
   
