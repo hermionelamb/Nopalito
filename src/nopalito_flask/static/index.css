@@ -41,33 +41,24 @@
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Define columns for the inner grid */
     grid-template-rows: 1fr; /* Define rows for the inner grid */
     box-sizing: border-box;
-
-
-/* 
-    grid-column: span 6;
-    grid-row-start: 1;
-    grid-row-end: span 1; 
-    background-color: #d741a7;
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
-    grid-template-rows: 1fr;  */
 } 
 
-
+.bookform{
+    grid-row-start: 2;
+    background-color: #C3D8BF;
+}
 
 .b {
     grid-column: span 5;
     grid-row-start: 2;
     grid-row-end: 7;  
+
 }
 
+
 .background{
-    /* background-image: url('images/blog_background.png');
-    background-repeat: repeat;
-    background-position: center;
-    background-size: cover;
-    height: 90vh; */
-background-color: #27A3A5;}
+    background-color: #27A3A5;
+}
 
 
 .c{
@@ -80,21 +71,10 @@ background-color: #27A3A5;}
     margin-left: auto;
     margin-right: auto;
     padding: 10%;
-   
     }
 
 
-
-/* .overlap {
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  } */
  
-
 .buttond{
     grid-row-start: 1; 
     grid-row-end: span 1;
@@ -102,9 +82,10 @@ background-color: #27A3A5;}
     grid-column-end: span 1; 
     display: flex;
     align-items: center;
-    justify-content: center;
-    
+    justify-content: center;  
 }
+
+
 
 .buttona{
     grid-row-start: 1; 
@@ -116,7 +97,9 @@ background-color: #27A3A5;}
     justify-content: center;
 }
 
-.buttonc{
+
+
+.buttonc {
     grid-row-start: 1; 
     grid-row-end: span 1;
     grid-column-start: 3; 
@@ -126,8 +109,9 @@ background-color: #27A3A5;}
     justify-content: center;
 }
 
-.buttonb{
 
+
+.buttonb {
     grid-row-start: 1; 
     grid-row-end: span 1;
     grid-column-start: 4; 
@@ -135,6 +119,18 @@ background-color: #27A3A5;}
     display: flex;
     align-items: center;
     justify-content: center;
+    
+}
+
+.buttone{
+    grid-row-start: 1; 
+    grid-row-end: span 1;
+    grid-column-start: 5; 
+    grid-column-end: span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e5771e;
     
 }
 
@@ -152,9 +148,6 @@ background-color: #27A3A5;}
   justify-content: center; /* Horizontally center the button content */
 }
 
-/* .button:hover{
-    background-color: #DEA54B;
-} */
 
 .button a {
     color: #C3D8BF; /* Set the text color for the anchor element */
@@ -168,31 +161,110 @@ background-color: #27A3A5;}
 }
 
 
+.our-story-banner{
+    width: 100%;
+    height: 10%;
+    background-color: #2e294e !important;
+    display:flex;
+    text-align: center;
+    align-items: center; /* Vertically center the button content */
+    justify-content: center; 
+    margin: 0;
+}
 
-/* hollywood cerise: #d741a7
-persian indigo: #3a1772
-celestial blue: #5398BE
-naples yellow: #F2CD5D
-earth yellow: #DEA54B */
+.our-story-banner h1{
+    margin: 0;
+    font-family: BarrioRegular;
+    color: #e5771e;
+    font-size: 4em;
 
-
-/* @media only screen and (max-width: 700px){
-    .button{
-        font-size: 12px !important;
-        width: 40%;
-        margin: none;
-        padding: none;
-    }
-
-    .grid{
-        row-gap: 0%;
-        column-gap: 0%;
-    }
-
-} */
+}
 
 
-@media only screen and (max-width: 800px) {
+.about-us{
+    margin-right: 20%;
+    margin-left: 20%;
+    text-align: center;
+    display: flex;
+    align-items: center; /* Vertically center the button content */
+    justify-content: center; 
+    font-size: 1.5em;
+    font-family: Tahoma;
+    padding: 2% 5% 2% 5%;
+    color: #2e294e;
+    border-left: 50px solid #C3D8BF;
+    border-right: 50px solid #C3D8BF;
+}
+
+
+
+.our-philosophy-banner{
+    width: 100%;
+    height: 10%;
+    background-color: #e5771e;
+    display: flex;
+    text-align: center;
+    align-items: center; /* Vertically center the button content */
+    justify-content: center; 
+    display: flex;
+    
+}
+
+
+.our-philosophy-banner h1{
+    margin: 0;
+    font-family: BarrioRegular;
+    color: #2e294e;
+    font-size: 4em;
+}
+
+.our-story-banner{
+    width: 100%;
+    height: 10%;
+    background-color: #E74F8C;
+    display:flex;
+    text-align: center;
+    align-items: center; /* Vertically center the button content */
+    justify-content: center; 
+}
+
+.book-now-banner{
+    width: 100%;
+    height: 10%;
+    background-color: #2e294e;
+    display:flex;
+    text-align: center;
+    align-items: center; /* Vertically center the button content */
+    justify-content: center; 
+    font-family: BarrioRegular;
+    color: #C3D8BF;
+    font-size: 3em;
+    margin-bottom: 0%;
+    padding: 0%;
+
+}
+
+.book-now-banner a {
+    text-decoration: none;
+    color: #C3D8BF
+}
+
+.book-now-banner a:link {
+    color: #C3D8BF
+}
+
+.book-now-banner a:visited{
+    color: #C3D8BF
+}
+
+.book-now-banner a:hover{
+    color: #27A3A5;
+}
+
+
+
+
+@media only screen and (max-width: 700px) {
     .a {
         grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     }
@@ -203,45 +275,48 @@ earth yellow: #DEA54B */
     }
 
     .nopalito_logo{
-        font-size: 5rem !important;
+        font-size: 4rem !important;
     }
+
+    .nopalito_info{
+        font-size: 1.4em !important;
+    }
+
+    .our-story-banner, .our-philosophy-banner{
+        width: 100%;
+        height: 6%;
+    }
+
+    .our-story-banner h1, .our-philosophy-banner h1{
+        font-size: 2em
+    }
+
+
+    .book-now-banner{
+        font-size: 2rem;
+    }
+
+    .about-us{
+        margin: 7%;
+        border: none;
+    }
+    
 }
 
-@media only screen and (max-width: 1200px) and (min-width: 800px){
+
+
+@media only screen and (max-width: 1200px) and (min-width: 700px){
     .button{
         font-size: 25px;
     }
 
     .nopalito_logo{
-        font-size: 8rem !important;
+        font-size: 7rem !important;
     }
+
+   
 }
 
-@media (max-width: 800px) {
-    /* body {
-        background-image: url('images/mobile_background.png');
-        background-repeat: repeat;
-        background-position: center;
-        background-size: cover;
-        
-    }*/} 
-
-    .pink_font{
-        color: #E74F8C;
-    }
-
-    .blue_font{
-        color: #27A3A5;
-    }
-
-    .orange_font{
-        color: #e5771e;
-    }
-
-    .green_font{
-        color: #C3D8BF
-
-    }
 
 
 .nopalito_logo{
@@ -262,4 +337,45 @@ earth yellow: #DEA54B */
     display: flex;
     justify-content: center;
 }
+
+
+
+/*  THIS IS FROM HOME.CSS  */
+
+.home-info{
+    width: 50%; /* Set the width to 50% of the parent container */
+    margin: 0 auto; /* Center the div horizontally */
+    padding-left: 25%; /* Set 25% padding on the left side */
+    padding-right: 25%; /* Set 25% padding on the right side */
+    display: block;
+    
+}
+
+.nopalito-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  
+  .logo{
+      display: block;
+      width: 35%;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+
+  @media (max-width: 600px) {
+    body {
+        background-image: url('images/mobile_backgroud.png');
+        background-repeat: repeat;
+        background-position: center;
+        background-size: cover;
+        
+    }
+
+
+  }
 
