@@ -5,25 +5,30 @@
     <title>Requests</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='login-style.css') }}">
     <style>
+        /* Styling for the table */
         table {
             width: 80%;
             margin: 20px auto;
             border-collapse: collapse;
         }
 
+        /* Styling for table headers and cells */
         th, td {
             padding: 10px;
             border: 1px solid #ccc;
         }
 
+        /* Styling for table headers */
         th {
             background-color: #f2cd5d;
         }
 
+        /* Center-align content within table cells */
         td {
             text-align: center;
         }
 
+        /* Inline-block display for the form elements */
         form {
             display: inline-block;
             margin: 5px;
@@ -33,6 +38,8 @@
 <body>
     <h1>Requests</h1>
     <h2>Unresolved Requests:</h2>
+
+    <!-- Table for displaying unresolved requests -->
     <table>
         <tr>
             <th>Staff ID</th>
@@ -41,6 +48,8 @@
             <th>Reason</th>
             <th>Actions</th>
         </tr>
+
+        <!-- Loop through each unresolved request and display its information -->
         {% for request in unresolved_requests %}
         <tr>
             <td>{{ request[0] }}</td>
@@ -48,9 +57,12 @@
             <td>{{ request[2] }}</td>
             <td>{{ request[3] }}</td>
             <td>
+                <!-- Form for approving the request -->
                 <form method="post" action="{{ url_for('process_request', request_id=request[4], status='approve') }}">
                     <button type="submit">Approve</button>
                 </form>
+
+                <!-- Form for declining the request -->
                 <form method="post" action="{{ url_for('process_request', request_id=request[4], status='decline') }}">
                     <button type="submit">Decline</button>
                 </form>
@@ -60,6 +72,8 @@
     </table>
 
     <h2>Resolved Requests:</h2>
+
+    <!-- Table for displaying resolved requests -->
     <table>
         <tr>
             <th>Staff ID</th>
@@ -68,17 +82,22 @@
             <th>Reason</th>
             <th>Status</th>
         </tr>
+
+        <!-- Loop through each resolved request and display its information -->
         {% for request in resolved_requests %}
         <tr>
             <td>{{ request[0] }}</td>
             <td>{{ request[1] }}</td>
             <td>{{ request[2] }}</td>
             <td>{{ request[3] }}</td>
+
+            <!-- Display the status of the request (Approved or Declined) -->
             <td>{% if request[4] %}Approved{% else %}Declined{% endif %}</td>
         </tr>
         {% endfor %}
     </table>
 
+    <!-- Button to navigate back to the admin_page -->
     <button onclick="window.location.href='/admin_page'">Back</button>
 
 </body>
