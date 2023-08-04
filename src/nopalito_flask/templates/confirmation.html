@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='booking.css')}}">
+</head>
+<body>
+    <h1>Booking Confirmation</h1>
+    <p>Thank you for your booking. Here are your booking details:</p>
+    <ul>
+        <li>Booking ID: {{ booking.id }}</li>
+        <li>First Name: {{ booking.fname }}</li>
+        <li>Last Name: {{ booking.lname }}</li>
+        <li>Phone Number: {{ booking.phone }}</li>
+        <li>Email: {{ booking.email }}</li>
+        <li>Number of Guests: {{ booking.guests }}</li>
+        <li>Booking Time: {{ booking.booking_time }}</li>
+        <li>Date: {{ booking.date }}</li>
+        <li>Table Number: {{ booking.table_number }}</li>
+        <li>Special Requests: {{ booking.requests }}</li>
+    </ul>
+</body>
